@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Audio/debug files
+*.wav
+*.log
+
+# Secrets
+.env
+*.env
+
+# Models / wakewords / archives
+*.onnx
+*.ppn
+*.zip
+*.tar.gz
+
+# Runtime/build artifacts
+tts/piper_runtime/
+tts/voices/
+stt/
+wakeword/
+
+# Notes / temp
+notes.txt
+
+# OS/editor
+.DS_Store
