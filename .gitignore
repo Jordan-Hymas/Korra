@@ -1,18 +1,21 @@
 # Python
 __pycache__/
 *.pyc
+*.pyo
 venv/
 
-# Audio/debug files
+# Audio files
 *.wav
+*.mp3
 *.log
 
-# Secrets
+# Secrets — never commit
 .env
 *.env
 
-# Models / wakewords / archives
+# Models / wake words / archives (large binaries — download separately)
 *.onnx
+*.onnx.json
 *.ppn
 *.zip
 *.tar.gz
@@ -23,8 +26,12 @@ tts/voices/
 stt/
 wakeword/
 
-# Notes / temp
+# Claude Code local settings
+.claude/
+
+# Temp / notes
 notes.txt
 
 # OS/editor
 .DS_Store
+Thumbs.db
