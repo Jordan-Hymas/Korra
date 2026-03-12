@@ -7,12 +7,15 @@ import re
 import queue
 import threading
 
+from dotenv import load_dotenv
 import pvporcupine
 from pvrecorder import PvRecorder
 from faster_whisper import WhisperModel
 
 sys.path.insert(0, os.path.dirname(__file__))
 from brain import stream_openclaw
+
+load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env"))
 
 # ── config ────────────────────────────────────────────────────────────────────
 
@@ -24,7 +27,11 @@ INPUT_WAV   = "/home/yeti/Korra/input.wav"
 MIC_INDEX      = 3
 SPEAKER_DEVICE = "plughw:2,0"
 SAMPLE_RATE    = 16000
-ACCESS_KEY     = "/7NfDHFeMtng0mL02IQlPazBHec5ssoQk71+iIZrNbyQVpZEx4bblg=="
+ACCESS_KEY     = os.environ.get("PORCUPINE_ACCESS_KEY", "")
+
+if not ACCESS_KEY:
+    print("[pipeline] FATAL: PORCUPINE_ACCESS_KEY is not set in .env")
+    sys.exit(1)
 
 SILENCE_DURATION   = 1.0   # seconds of genuine quiet before stopping
 MAX_RECORD_SECONDS = 30    # hard cap for long prompts
